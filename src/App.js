@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Maincontent } from "./component/Maincontent";
 import { Sidebar } from "./component/Sidebar";
+import { Loader } from "./component/Loader";
 
 import "./App.css";
 
@@ -24,6 +25,8 @@ const App = () => {
     2020,
     2021,
   ]);
+  const [selectedYear, setSelectedYear] = useState(null);
+
   useEffect(() => {
     fetch(`https://api.spacexdata.com/v3/launches?limit=100`)
       .then((res) => res.json())
@@ -32,6 +35,18 @@ const App = () => {
         // setYearFilter(data.launch_year);
       });
   }, []);
+
+  useEffect(() => {
+    console.log("selectedyear", selectedYear);
+    fetch(
+      `https://api.spacexdata.com/v3/launches?limit=100&launch_year=${selectedYear}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setSpaceData(data);
+      });
+  }, [selectedYear]);
+
   useEffect(() => {}, [spaceData]);
   // const handleYear = () => {
   //   setYearFilter(() => {
@@ -44,10 +59,15 @@ const App = () => {
   //   // console.log("unqiue value", unique);
   //   // console.log("fetch yearfilter", yearFilter);
   // };
+
+  const handleYear = (year) => {
+    setSelectedYear(year);
+  };
+
   return (
     <div className="grid grid-cols-5 m-10 ">
       <p className="text-5xl col-span-5 -mt-5">SpaceX Launch Programs</p>
-      <Sidebar data={yearFilter} />
+      <Sidebar data={yearFilter} handleYear={handleYear} />
       <Maincontent data={spaceData} />
     </div>
     // <div class="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-20">

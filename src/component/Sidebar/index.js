@@ -1,13 +1,18 @@
 import React from "react";
 
-const Sidebar = ({ data }) => {
+const Sidebar = ({ data,handleYear }) => {
   return (
     <div className="mt-5">
       <p className="text-2xl">Filter</p>
       <p className="text-center underline text-2xl py-5">Launch Year</p>
       {data.map((item, index) => {
         return (
-          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-5 my-1 rounded">
+          <button
+            onClick={() => {
+              handleYear(item);
+            }}
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mx-5 my-1 rounded"
+          >
             {item}
           </button>
         );

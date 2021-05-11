@@ -24,16 +24,16 @@ const Card = ({
       </div>
       <div className="px-6 pt-4 pb-2">
         <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-          Mission Id :{missionid}
+          Mission Id : {missionid.length ? missionid[0] : "NA"}
         </span>
         <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-          Launch Year:{launchyear}
+          Launch Year: {launchyear}
         </span>
         <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-          Successlaunch :{successlaunch}
+          Successlaunch : {successlaunch ? "true" : "false"}
         </span>
         <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
-          Success Landing :{successlanding}
+          Success Landing : {successlanding ? "true" : "false"}
         </span>
       </div>
     </div>
