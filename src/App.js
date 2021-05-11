@@ -7,7 +7,6 @@ import "./App.css";
 const App = () => {
   const [spaceData, setSpaceData] = useState();
   const [yearFilter] = useState([
-    2005,
     2006,
     2007,
     2008,
@@ -46,7 +45,8 @@ const App = () => {
   //   // console.log("fetch yearfilter", yearFilter);
   // };
   return (
-    <div className="grid grid-cols-4">
+    <div className="grid grid-cols-5 m-10 ">
+      <p className="text-5xl col-span-5 -mt-5">SpaceX Launch Programs</p>
       <Sidebar data={yearFilter} />
       <Maincontent data={spaceData} />
     </div>
