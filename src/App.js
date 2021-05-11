@@ -6,20 +6,34 @@ import "./App.css";
 
 const App = () => {
   const [spaceData, setSpaceData] = useState();
-  const [yearFilter, setYearFilter] = useState([]);
+  const [yearFilter] = useState([
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+  ]);
   useEffect(() => {
-    fetch(
-      `https://api.spacexdata.com/v3/launches?limit=100&amp;launch_success=true&amp;land_success=true&amp;launch_year=2014`
-    )
+    fetch(`https://api.spacexdata.com/v3/launches?limit=100`)
       .then((res) => res.json())
       .then((data) => {
         setSpaceData(data);
         // setYearFilter(data.launch_year);
       });
   }, []);
-  useEffect(() => {
-  
-  }, [spaceData]);
+  useEffect(() => {}, [spaceData]);
   // const handleYear = () => {
   //   setYearFilter(() => {
   //     spaceData&&spaceData.map((item, index) => {
@@ -33,8 +47,8 @@ const App = () => {
   // };
   return (
     <div className="grid grid-cols-4">
-      <Sidebar data={spaceData} />
-      <Maincontent  data={spaceData} />
+      <Sidebar data={yearFilter} />
+      <Maincontent data={spaceData} />
     </div>
     // <div class="max-w-md py-4 px-8 bg-white shadow-lg rounded-lg my-20">
     //   <div class="flex justify-center md:justify-end -mt-16">
