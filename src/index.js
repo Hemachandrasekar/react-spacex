@@ -3,12 +3,13 @@ import ReactDOM from "react-dom";
 import "./assets/main.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById("root")
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>,
+    document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
